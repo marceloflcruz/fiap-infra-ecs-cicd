@@ -12,5 +12,5 @@ phases:
     commands:
       - echo "Running terraform init, plan, and apply..."
       - terraform init
-      - terraform plan
-      - terraform apply -auto-approve
+      - terraform plan -var="github_token=$GITHUB_TOKEN"
+      - terraform apply -auto-approve -var="github_token=$GITHUB_TOKEN"

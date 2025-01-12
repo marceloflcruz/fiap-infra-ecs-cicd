@@ -14,6 +14,12 @@ resource "aws_codebuild_project" "terraform_build_project" {
     image                       = "aws/codebuild/standard:5.0"
     type                        = "LINUX_CONTAINER"
     privileged_mode             = true  # If needed for Docker-in-Docker
+
+    environment_variable {
+      name  = "GITHUB_TOKEN"
+      type  = "SECRETS_MANAGER"
+      value = "/fiap/terraform/github_token"  # The name of your secret
+    }
   }
 
   # The source for CodeBuild is "CODEPIPELINE" 
