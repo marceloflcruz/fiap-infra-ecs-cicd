@@ -37,6 +37,9 @@ data "aws_iam_policy_document" "codepipeline_inline" {
       "logs:*",
       "ssm:*"
     ]
-    resources = ["arn:aws:iam::185983175555:role/CodeBuildServiceRole"]
+    resources = [
+      "arn:aws:iam::185983175555:role/CodeBuildServiceRole",
+      "${aws_s3_bucket.codepipeline_artifacts.arn}/*"
+    ]
   }
 }
