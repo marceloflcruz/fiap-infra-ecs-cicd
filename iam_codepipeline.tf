@@ -30,7 +30,12 @@ data "aws_iam_policy_document" "codepipeline_inline" {
     actions = [
       "s3:*",
       "codebuild:*",
-      "iam:PassRole"
+      "iam:*",
+      "ec2:*",
+      "ecs:*",
+      "cloudformation:*",
+      "logs:*",
+      "ssm:*"
     ]
     resources = ["*"]
   }

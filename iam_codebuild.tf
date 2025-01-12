@@ -36,8 +36,7 @@ data "aws_iam_policy_document" "codebuild_inline" {
       "iam:*",
       "cloudformation:*",
       "logs:*",
-      "ssm:*",
-      "iam:*"
+      "ssm:*"
     ]
     resources = ["*"]
   }
