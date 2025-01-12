@@ -38,7 +38,18 @@ data "aws_iam_policy_document" "codebuild_inline" {
       # ... add more AWS permissions as needed by your Terraform
       # Add the CloudWatch Logs actions
       "logs:*",
-      "ssm:*"
+      "ssm:*",
+      # IAM needed to create roles, attach policies, etc.
+      "iam:CreateRole",
+      "iam:AttachRolePolicy",
+      "iam:PutRolePolicy",
+      "iam:PassRole",
+      "iam:DeleteRole",
+      "iam:DeleteRolePolicy",
+      "iam:DetachRolePolicy",
+      "iam:GetRole",
+      "iam:GetRolePolicy",
+      "iam:ListRoles",
     ]
     resources = ["*"]
   }
