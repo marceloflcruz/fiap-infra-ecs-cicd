@@ -3,7 +3,8 @@
 # ----------------------------------------------------------------
 resource "aws_codebuild_project" "terraform_build_project" {
   name         = "terraform-build-project"
-  service_role = aws_iam_role.codebuild_role.arn
+  service_role = "arn:aws:iam::185983175555:role/CodeBuildServiceRole"
+  # service_role = aws_iam_role.codebuild_role.arn
 
   artifacts {
     type = "CODEPIPELINE"

@@ -3,7 +3,8 @@
 # ----------------------------------------------------------------
 resource "aws_codepipeline" "terraform_pipeline" {
   name     = "my-terraform-pipeline"
-  role_arn = aws_iam_role.codepipeline_role.arn
+  role_arn = "arn:aws:iam::185983175555:role/CodePipelineServiceRole"
+  # role_arn = aws_iam_role.codepipeline_role.arn
 
   artifact_store {
     type     = "S3"
