@@ -1,40 +1,44 @@
 # ----------------------------------------------------------------
 # iam_codebuild.tf
 # ----------------------------------------------------------------
-# data "aws_iam_policy_document" "codebuild_assume_role" {
-#   statement {
-#     effect = "Allow"
-#     principals {
-#       type        = "Service"
-#       identifiers = ["*"]
-#     }
-#     actions = ["*"]
-#   }
-# }
+
+# Define the policy document for the assume role
+data "aws_iam_policy_document" "codebuild_assume_role" {
+  statement {
+    effect = "Allow"
+    principals {
+      type        = "Service"
+      identifiers = ["codebuild.amazonaws.com"] # Specific AWS service
+    }
+    actions = ["sts:AssumeRole"] # Define allowed actions
+  }
+}
+
+# Create the IAM Role for CodeBuild
+resource "aws_iam_role" "codebuild_role" {
+  name               = "CodeBuildServiceRole"
+  assume_role_policy = data.aws_iam_policy_document.codebuild_assume_role.json
+}
+
 
 # resource "aws_iam_role" "codebuild_role" {
-#   name               = "CodeBuildServiceRole"
-#   assume_role_policy = data.aws_iam_policy_document.codebuild_assume_role.json
+#   name = "CodeBuildServiceRole"
+
+#   assume_role_policy = <<EOF
+# {
+#   "Version": "2012-10-17",
+#   "Statement": [
+#     {
+#       "Effect": "Allow",
+#       "Principal": {
+#         "Service": "codebuild.amazonaws.com"
+#       },
+#       "Action": "sts:AssumeRole"
+#     }
+#   ]
 # }
-
-resource "aws_iam_role" "codebuild_role" {
-  name = "CodeBuildServiceRole"
-
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "codebuild.amazonaws.com"
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-EOF
-}
+# EOF
+# }
 
 
 # Attach policies that allow CodeBuild to do what it needs:
