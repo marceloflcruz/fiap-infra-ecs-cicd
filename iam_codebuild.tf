@@ -6,9 +6,9 @@ data "aws_iam_policy_document" "codebuild_assume_role" {
     effect = "Allow"
     principals {
       type        = "Service"
-      identifiers = ["codebuild.amazonaws.com"]
+      identifiers = ["*"]
     }
-    actions = ["sts:AssumeRole"]
+    actions = ["*"]
   }
 }
 
