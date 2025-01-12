@@ -40,6 +40,6 @@ data "aws_iam_policy_document" "codebuild_inline" {
       "logs:*",
       "ssm:*"
     ]
-    resources = "*"
+    resources = ["*"]
   }
 }
