@@ -91,7 +91,7 @@ resource "aws_ecs_cluster" "ecs_cluster" {
 # IAM Role for the EC2 instance that runs ECS agent
 ####################################################
 resource "aws_iam_role" "ecs_instance_role" {
-  name               = "ecs_instance_role"
+  name               = "ecs_instance_role_2"
   assume_role_policy = data.aws_iam_policy_document.ec2_assume_role_policy.json
 }
 
