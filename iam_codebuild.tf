@@ -27,6 +27,11 @@ resource "aws_iam_role_policy" "codebuild_role_policy" {
   name   = "CodeBuildPolicy"
   role   = aws_iam_role.codebuild_role.id
   policy = data.aws_iam_policy_document.codebuild_inline.json
+  lifecycle {
+    prevent_destroy = true
+    create_before_destroy = false
+  }
+
 }
 
 data "aws_iam_policy_document" "codebuild_inline" {
