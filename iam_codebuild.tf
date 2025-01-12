@@ -28,7 +28,7 @@ resource "aws_iam_role_policy" "codebuild_role_policy" {
   role   = aws_iam_role.codebuild_role.id
   policy = data.aws_iam_policy_document.codebuild_inline.json
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy       = true
     create_before_destroy = false
   }
 
@@ -36,15 +36,16 @@ resource "aws_iam_role_policy" "codebuild_role_policy" {
 
 data "aws_iam_policy_document" "codebuild_inline" {
   statement {
-    effect    = "Allow"
-    actions   = [
+    effect = "Allow"
+    actions = [
+      "ssm:*",
       "s3:*",
-      "ec2:*",
-      "ecs:*",
-      "iam:*",
-      "cloudformation:*",
       "logs:*",
-      "ssm:*"
+      "iam:*",
+      "ecs:*",
+      "ec2:*",
+      "cloudformation:*",
+      "secretsmanager:*"
     ]
     resources = ["*"]
   }
