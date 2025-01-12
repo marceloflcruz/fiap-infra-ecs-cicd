@@ -26,22 +26,30 @@ resource "aws_iam_role_policy" "codebuild_role_policy" {
   policy = data.aws_iam_policy_document.codebuild_inline.json
 }
 
+# data "aws_iam_policy_document" "codebuild_inline" {
+#   statement {
+#     effect    = "Allow"
+#     actions   = [
+#       "s3:*",
+#       "ec2:*",
+#       "ecs:*",
+#       "iam:PassRole",
+#       "cloudformation:*",
+#       # ... add more AWS permissions as needed by your Terraform
+#       # Add the CloudWatch Logs actions
+#       "logs:CreateLogGroup",
+#       "logs:CreateLogStream",
+#       "logs:PutLogEvents",
+#       "logs:DescribeLogStreams"
+#     ]
+#     resources = ["*"]
+#   }
+# }
+
 data "aws_iam_policy_document" "codebuild_inline" {
   statement {
     effect    = "Allow"
-    actions   = [
-      "s3:*",
-      "ec2:*",
-      "ecs:*",
-      "iam:PassRole",
-      "cloudformation:*",
-      # ... add more AWS permissions as needed by your Terraform
-      # Add the CloudWatch Logs actions
-      "logs:CreateLogGroup",
-      "logs:CreateLogStream",
-      "logs:PutLogEvents",
-      "logs:DescribeLogStreams"
-    ]
+    actions   = "*"
     resources = ["*"]
   }
 }
