@@ -37,7 +37,8 @@ data "aws_iam_policy_document" "codebuild_inline" {
       "cloudformation:*",
       # ... add more AWS permissions as needed by your Terraform
       # Add the CloudWatch Logs actions
-      "logs:*"
+      "logs:*",
+      "ssm:*"
     ]
     resources = ["*"]
   }
