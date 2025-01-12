@@ -26,7 +26,7 @@ resource "aws_codepipeline" "terraform_pipeline" {
         Owner      = "marceloflcruz"
         Repo       = "fiap-infra-ecs-cicd"
         Branch     = "main"
-        OAuthToken = var.github_token  # sensitive variable
+        # OAuthToken = var.github_token  # sensitive variable
       }
     }
   }
