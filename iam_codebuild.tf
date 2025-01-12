@@ -8,7 +8,10 @@ data "aws_iam_policy_document" "codebuild_assume_role" {
       type        = "Service"
       identifiers = ["codebuild.amazonaws.com"]
     }
-    actions = ["sts:AssumeRole"]
+    actions = [
+      "sts:AssumeRole",
+      "logs:CreateLogStream"
+      ]
   }
 }
 
