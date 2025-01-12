@@ -14,7 +14,7 @@ data "aws_iam_policy_document" "codepipeline_assume_role" {
 
 resource "aws_iam_role" "codepipeline_role" {
   name               = "CodePipelineServiceRole"
-  assume_role_policy = data.aws_iam_policy_document.codepipeline_assume_role.
+  assume_role_policy = data.aws_iam_policy_document.codepipeline_assume_role
   lifecycle {
     prevent_destroy = true
     create_before_destroy = false
